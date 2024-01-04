@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
 
-public class JunkDamReceiver : DamageReceiver
+public class ShootableObjectDamReceiver : DamageReceiver
 {
-    [SerializeField] protected JunkCrl junkCrl;
-    public JunkCrl BulletCrl { get { return junkCrl; } }
+    [SerializeField] protected ShootableObjectCrl shootableObjectCrl;
+    public ShootableObjectCrl ShootableObjectCrl { get { return shootableObjectCrl; } }
     protected override void LoadCompoments()
     {
         this.LoadCrl();
@@ -15,12 +15,12 @@ public class JunkDamReceiver : DamageReceiver
     }
     protected override void LoadHP()
     {
-        this.maxHp = this.junkCrl.ShootableObject.junkHp;
+        this.maxHp = this.shootableObjectCrl.ShootableObject.junkHp;
         base.LoadHP();
     }
     protected void LoadCrl()
     {
-        this.junkCrl = transform.parent.GetComponent<JunkCrl>();
+        this.shootableObjectCrl = transform.parent.GetComponent<ShootableObjectCrl>();
     }
     protected void FixedUpdate()
     {
@@ -32,13 +32,13 @@ public class JunkDamReceiver : DamageReceiver
     {
         Transform newTrans = FXSpawner.Instance.Spawn("Smoke_2", this.transform.parent.position, this.transform.parent.rotation);
         newTrans.gameObject.SetActive(true);
-        this.junkCrl.Despawn.DespawnObject();
+        this.shootableObjectCrl.Despawn.DespawnObject();
         this.isDead = false;
         this.currentHp = this.maxHp;
     }
      protected void DropItem()
     {
-        List<DropRate> dropRates = junkCrl.ShootableObject.dropRate;
+        List<DropRate> dropRates = shootableObjectCrl.ShootableObject.dropRate;
         ItemSpawner.Instance.Drop(dropRates,transform.parent.position,transform.parent.rotation);
     }
 }

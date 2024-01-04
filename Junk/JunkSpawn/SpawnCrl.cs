@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkSpawnCrl : TungMonoBehaviour
+public class SpawnCrl : TungMonoBehaviour
 {
     [SerializeField] protected JunkRandomPoints randomPoint;
-    [SerializeField] protected JunkSpawner junkSpawn;
-    public JunkSpawner JunkSpawn { get { return junkSpawn; } }
+    [SerializeField] protected Spawner spawner;
+    public Spawner JunkSpawn { get { return spawner; } }
     public JunkRandomPoints JunkRandom {  get { return randomPoint; } }
     protected override void LoadCompoments()
     {
@@ -15,9 +15,9 @@ public class JunkSpawnCrl : TungMonoBehaviour
     }
     protected virtual void LoadObject()
     {
-        if (this.junkSpawn != null) return;
+        if (this.spawner != null) return;
         if (this.randomPoint != null) return;
-        this.junkSpawn = Transform.FindObjectOfType<JunkSpawner>();
+        this.spawner = transform.GetComponent<Spawner>();
         this.randomPoint = Transform.FindObjectOfType<JunkRandomPoints>();
     }
 }

@@ -8,7 +8,7 @@ public class ItemUpgrade : InventoryAbtract
     protected override void Start()
     {
         base.Start();
-        this.Upgrade(0);
+       // this.Upgrade(0);
     }
     protected virtual bool Upgrade(int index)
     {

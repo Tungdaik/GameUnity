@@ -7,7 +7,7 @@ public class ItemInventoryDrop : InventoryAbtract
     protected override void Start()
     {
         base.Start();
-        this.DropItem(0);
+        //this.DropItem(0);
     }
     protected virtual void DropItem(int index)
     {

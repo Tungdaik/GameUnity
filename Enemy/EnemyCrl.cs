@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline;
 using UnityEngine;
 
-public class JunkCrl : ShootableObjectCrl
+public class EnemyCrl : ShootableObjectCrl
 {
     protected override string GetName()
     {
-        return ObjectTypeEnum.Junk.ToString();
+        return ObjectTypeEnum.Enemy.ToString();
     }
 }
