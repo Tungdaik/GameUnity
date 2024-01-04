@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JunkSpawnRandom : TungMonoBehaviour
 {
-    [SerializeField] protected JunkSpawnCrl junkCrl;
+    [SerializeField] protected JunkSpawnCrl junkSpawnCrl;
     
     protected override void LoadCompoments()
     {
@@ -17,15 +17,16 @@ public class JunkSpawnRandom : TungMonoBehaviour
         this.SpawnRandom();
     }
     protected virtual void LoadController()
-    {  if (junkCrl != null) return;
-        this.junkCrl = Transform.FindObjectOfType<JunkSpawnCrl>();
+    {  if (junkSpawnCrl != null) return;
+        this.junkSpawnCrl = Transform.FindObjectOfType<JunkSpawnCrl>();
     }
     protected virtual void SpawnRandom()
     {
-        Transform newRandom = this.junkCrl.JunkRandom.GetRandomPoint();
+        Transform newRandom = this.junkSpawnCrl.JunkRandom.GetRandomPoint();
         Vector3 newPos = newRandom.position;
         Quaternion newRot = transform.rotation;
-         Transform newTrans = this.junkCrl.JunkSpawn.Spawn("JunkOne", newPos, newRot);
+        Transform newPrefab = this.junkSpawnCrl.JunkSpawn.GetRandomPrefab();
+         Transform newTrans = this.junkSpawnCrl.JunkSpawn.Spawn(newPrefab, newPos, newRot);
          newTrans.gameObject.SetActive(true);
         Invoke(nameof(SpawnRandom), 1f);
     }

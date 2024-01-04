@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class ShipCrl : TungMonoBehaviour
+public class InventoryAbtract : TungMonoBehaviour
 {
+    [Header("Iventory Abtract")]
     [SerializeField] protected Inventory inventory;
-    public Inventory Inventory { get { return inventory; } }
     protected override void LoadCompoments()
     {
         base.LoadCompoments();
@@ -14,6 +13,6 @@ public class ShipCrl : TungMonoBehaviour
     }
     protected virtual void LoadInventory()
     {
-        this.inventory = transform.GetComponentInChildren<Inventory>();
+        this.inventory = transform.parent.GetComponent<Inventory>();
     }
 }

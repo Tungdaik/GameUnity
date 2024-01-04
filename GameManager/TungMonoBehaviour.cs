@@ -25,4 +25,8 @@ public class TungMonoBehaviour : MonoBehaviour
     {
         //for override
     }
+    protected virtual void OnEnable()
+    {
+        //for override
+    }
 }

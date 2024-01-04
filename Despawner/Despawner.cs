@@ -6,7 +6,7 @@ public abstract class Despawner : TungMonoBehaviour
 {
     protected void FixedUpdate()
     {
-        if (!this.CanDespawn()) return;
+        if (!this.CanDespawn() || this.transform.parent.gameObject.activeSelf == false) return;
         this.DespawnObject();
     }
     protected abstract bool CanDespawn(); 

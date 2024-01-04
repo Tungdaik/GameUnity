@@ -10,6 +10,7 @@ public class BulletDamSender : DamageSender
         base.LoadCompoments();
         this.LoadBulletCrl();
     }
+    
     protected virtual void LoadBulletCrl()
     {
         this.bulletCrl = this.transform.parent.GetComponent<BulletCrl>();
@@ -17,8 +18,15 @@ public class BulletDamSender : DamageSender
     public override void Send(DamageReceiver damageReceiver)
     {
         base.Send(damageReceiver);
+        //Get FX Import
+       this.GetImportFX();
         // Pooling object
         this.bulletCrl.BulletDespawn.DespawnObject();
     }
-
+    protected void GetImportFX()
+    {
+        Transform newTrans = FXSpawner.Instance.Spawn("Impact_1", this.transform.parent.position, this.transform.parent.rotation);
+        newTrans.gameObject.SetActive(true);
+        
+    }
 }

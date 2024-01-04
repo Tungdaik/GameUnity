@@ -43,10 +43,19 @@ public abstract class Spawner : TungMonoBehaviour
     public virtual Transform Spawn(string prefabName,Vector3 spawnPos,Quaternion spawnRot)
     {
         Transform pref = this.GetPrefabFromText(prefabName);
+        return this.Spawn(pref, spawnPos, spawnRot);
+    }
+    public virtual Transform Spawn(Transform pref, Vector3 spawnPos, Quaternion spawnRot)
+    {
         Transform newPrefab = this.GetPrefabFromPool(pref);
         newPrefab.SetPositionAndRotation(spawnPos, spawnRot);
         newPrefab.parent = this.holder;
         return newPrefab;
+    }
+    public virtual Transform GetRandomPrefab()
+    {
+        int digit = Random.Range(0,prefabs.Count);
+        return prefabs[digit];
     }
     protected virtual Transform GetPrefabFromText(string text)
     {

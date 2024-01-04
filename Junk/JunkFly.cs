@@ -11,7 +11,7 @@ public class JunkFly : ParentFly
         base.SetValue();
         objectSpeed = 1;
     }
-    protected virtual void OnEnable()
+    protected override void OnEnable()
     {
         this.SetRotationJunk();
     }
