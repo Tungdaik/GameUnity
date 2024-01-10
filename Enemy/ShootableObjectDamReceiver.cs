@@ -41,4 +41,9 @@ public class ShootableObjectDamReceiver : DamageReceiver
         List<DropRate> dropRates = shootableObjectCrl.ShootableObject.dropRate;
         ItemSpawner.Instance.Drop(dropRates,transform.parent.position,transform.parent.rotation);
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.currentHp = maxHp; 
+    }
 }

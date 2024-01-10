@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
     public Vector3 TargetPosition { get { return targetPosition; } }
     protected float onFiring;
     public float OnFiring { get {  return onFiring; } }
+    protected float onMoving;
+    public float OnMoving { get { return onMoving; } }
     private void Awake()
     {
         InputManager.instance = this; 
@@ -19,6 +21,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         this.onFiring = Input.GetAxis("Fire1");
+        this.onMoving = Input.GetAxis("Fire2");
     }
     void FixedUpdate()
     {

@@ -24,6 +24,11 @@ public class DamageImport : BulletAbtract
     }
    protected virtual void OnTriggerEnter(Collider other)
     {
+        if (ThatIsYou(other)) return;
         this.bulletCrl.BulletDamSender.Send(other.transform);
+    }
+    protected virtual bool ThatIsYou(Collider other)
+    {
+       return  other.transform.parent.name == this.bulletCrl.ShooterName;
     }
 }

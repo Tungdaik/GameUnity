@@ -2,38 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipShooting : MonoBehaviour
+public class ShipShooting : Shooting
 {
-    [SerializeField] protected bool shooting = false;
-   
-    [SerializeField] protected float timePerShoot = 2f;
-    [SerializeField] protected float indexTime = 0f;
-    [SerializeField] protected string kindOfBullet = "Ditmemay";
-     void FixedUpdate()
+    protected override bool IsShooting()
     {
-        this.IsShooting();
-        this.Shooting();
+        return InputManager.Instance.OnFiring == 1;
     }
-    protected virtual void Shooting()
-    {
-        indexTime += 0.2f;
-        if (!shooting) return;
-        
-        if (indexTime < timePerShoot) return;
-        indexTime = 0f;
-        Vector3 spawnPos = transform.parent.position;
-        Quaternion spawnRot = transform.parent.rotation;
-
-        Transform newTransform = BulletSpawner.Instance.Spawn(kindOfBullet,spawnPos, spawnRot);
-        if (newTransform == null ) {
-            //
-                                     }
-          newTransform.gameObject.SetActive(true);
-    }
-    protected virtual void IsShooting()
-    {
-        this.shooting = InputManager.Instance.OnFiring == 1;
-    }
-
-    
 }

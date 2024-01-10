@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public abstract class Moving : MonoBehaviour
+public abstract class Moving : TungMonoBehaviour
 
 {
     [SerializeField] protected Vector3 targetPosition;
     [SerializeField] protected float speed = 0.01f;
+    [SerializeField] protected Transform frontPoint;
+
     protected virtual void FixedUpdate()
     {
-        
+        if (!CanMove()) return;
         this.Move();
     }
     
@@ -26,9 +28,11 @@ public abstract class Moving : MonoBehaviour
 
     {
          
-        Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, this.speed);
+        Vector3 newPos = Vector3.Lerp(transform.parent.position, frontPoint.position, this.speed);
         newPos.z = 0f;
         transform.parent.position = newPos;
     }
     protected abstract void GetTargetPosition();
+    protected abstract void SetFrontPoint();
+    protected abstract bool CanMove();
 }

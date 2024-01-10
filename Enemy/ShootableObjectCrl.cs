@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShootableObjectCrl : TungMonoBehaviour
+public abstract class ShootableObjectCrl : BaseCrl
 {
     [SerializeField] protected Transform shape;
     [SerializeField] protected Despawner despawner;

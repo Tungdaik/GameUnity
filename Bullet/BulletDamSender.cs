@@ -25,7 +25,7 @@ public class BulletDamSender : DamageSender
     }
     protected void GetImportFX()
     {
-        Transform newTrans = FXSpawner.Instance.Spawn("Impact_1", this.transform.parent.position, this.transform.parent.rotation);
+        Transform newTrans = FXSpawner.Instance.Spawn("Impact_2", this.transform.parent.position, this.transform.parent.rotation);
         newTrans.gameObject.SetActive(true);
         
     }

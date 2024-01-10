@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [Serializable]
-public enum ObjectTypeEnum
+public enum MoveTypeEnum 
 {
-   NoType = 0,
-   Junk = 1,
-   Enemy = 2,
-   Boss = 3,
-   SpaceShip = 4,
-   Ship = 5
+   Default = 0,
+   Move = 1,
+   Mining = 2,
+   Patrol = 3
 }

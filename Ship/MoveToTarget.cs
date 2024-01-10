@@ -5,6 +5,15 @@ using UnityEngine;
 public class MoveToTarget : Moving
 
 {
+    [Header("Move To Target")]
+    
+    [SerializeField] protected Quaternion currentRot;
+    [SerializeField] protected float speedRot = 0.05f;
+    protected override void LoadCompoments()
+    {
+        base.LoadCompoments();
+        this.SetFrontPoint();
+    }
     protected override void FixedUpdate()
     {
         this.GetTargetPosition();
@@ -20,6 +29,16 @@ public class MoveToTarget : Moving
         Vector3 diff = this.targetPosition - transform.parent.position;
         diff.Normalize();
         float rot_z = Mathf.Atan2(diff.x, diff.y) * Mathf.Rad2Deg;
-        transform.parent.rotation = Quaternion.Euler(0f, 0f, -rot_z);
+        Quaternion Rot = Quaternion.Euler(0f, 0f, -rot_z);
+        this.currentRot = Quaternion.Lerp(transform.parent.rotation, Rot, this.speedRot);
+        transform.parent.rotation = currentRot;
+    }
+    protected override void SetFrontPoint()
+    {
+        this.frontPoint = transform.Find("FrontPoint");
+    }
+    protected override bool CanMove()
+    {
+        return true;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCrl : TungMonoBehaviour
+public class ItemCrl : BaseCrl
 {
     [SerializeField] protected ItemProfileSO itemProfileSO;
     [SerializeField] protected IronDespawn ironDespawn;

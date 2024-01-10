@@ -13,7 +13,7 @@ public class FollowTarget : TungMonoBehaviour
     }
     protected virtual void LoadTargetObj()
     {
-        this.targetObj = Transform.FindObjectOfType<ShipCrl>().transform;
+        this.targetObj = Transform.FindObjectOfType<ShipCrlBeta>().transform;
     }
     protected void FixedUpdate()
     {
