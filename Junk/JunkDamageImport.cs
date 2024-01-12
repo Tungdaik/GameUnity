@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent (typeof(SphereCollider))]
-public class DamageImport : DameAbtract
+public class JunkDamageImport : JunkDameAbtract
 {
     [Header("Damage Import")]
     [SerializeField] protected SphereCollider spheCollider;
@@ -25,10 +25,10 @@ public class DamageImport : DameAbtract
    protected virtual void OnTriggerEnter(Collider other)
     {
         if (ThatIsYou(other)) return;
-        this.bulletCrl.BulletDamSender.Send(other.transform);
+        this.objCrl.DamageSender.Send(other.transform);
     }
     protected virtual bool ThatIsYou(Collider other)
     {
-       return  other.transform.parent.name == this.bulletCrl.ShooterName;
+       return  other.transform.parent.name == this.transform.parent.name;
     }
 }

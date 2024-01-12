@@ -8,8 +8,8 @@ public class PlayerCrl : TungMonoBehaviour
     public static PlayerCrl Instance { get { return instance; } }
     [SerializeField] protected PlayerPickUp playerPickUp;
     public PlayerPickUp PlayerPickUp { get {  return playerPickUp; } }
-    [SerializeField] protected ShipCrl currentShip;
-    public ShipCrl CurrentShip { get { return currentShip; } }
+    [SerializeField] protected ShipCrlBeta currentShip;
+    public ShipCrlBeta CurrentShip { get { return currentShip; } }
     protected override void Awake()
     {
         base.Awake();
@@ -23,7 +23,7 @@ public class PlayerCrl : TungMonoBehaviour
     }
     protected virtual void LoadCurrentShip()
     {
-        this.currentShip = Transform.FindObjectOfType<ShipCrl>();
+        this.currentShip = Transform.FindObjectOfType<ShipCrlBeta>();
     }
     protected virtual void LoadPlayerPickUp() {
 

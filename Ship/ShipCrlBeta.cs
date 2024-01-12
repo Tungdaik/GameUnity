@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipCrlBeta : ShootableObjectCrl
 {
     [SerializeField] protected Inventory inventory;
+    public Inventory Inventory { get { return inventory; } }
     protected override void LoadCompoments()
     {
         base.LoadCompoments();

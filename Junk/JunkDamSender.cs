@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletDamSender : DamageSender
+public class JunkDamSender : DamageSender
 {
-    [SerializeField] protected BulletCrl bulletCrl;
+    [SerializeField] protected JunkCrl junkCrl;
     protected override void LoadCompoments()
     {
         base.LoadCompoments();
         this.LoadBulletCrl();
     }
-    protected override void SetValue()
-    {
-        base.SetValue();
-        this.damage = bulletCrl.BulletProfileSO.damagePerShot;
-    }
+    
     protected virtual void LoadBulletCrl()
     {
-        this.bulletCrl = this.transform.parent.GetComponent<BulletCrl>();
+        this.junkCrl = this.transform.parent.GetComponent<JunkCrl>();
     }
     public override void Send(DamageReceiver damageReceiver)
     {
@@ -25,7 +21,7 @@ public class BulletDamSender : DamageSender
         //Get FX Import
        this.GetImportFX();
         // Pooling object
-        this.bulletCrl.BulletDespawn.DespawnObject();
+        this.junkCrl.Despawn.DespawnObject();
     }
     protected void GetImportFX()
     {

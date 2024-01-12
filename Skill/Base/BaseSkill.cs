@@ -6,26 +6,42 @@ public abstract class BaseSkill : TungMonoBehaviour
 
 {
     [Header("Base Skill")]
-    [SerializeField] protected float currentTime;
+    [SerializeField] protected float currentTime = 0;
     [SerializeField] protected float cooldownTime;
     [SerializeField] protected bool isReady = false;
     [SerializeField] protected bool isRunning = false;
+    [SerializeField] protected float effectTime = 5f;
+    [SerializeField] protected float effectCount = 0;
+    [SerializeField] protected bool use;
     protected virtual void FixedUpdate()
     {
         this.currentTime += Time.fixedDeltaTime;
-        if (this.currentTime < cooldownTime) return;
-        this.isReady = true;
-        if (!this.isRunning) return;
-        this.Use();
+        if (isRunning) effectCount += Time.fixedDeltaTime;
+        if (currentTime > cooldownTime) isReady = true;
+        if (effectCount > effectTime) this.CatchSkill();
+        if (use && isReady) this.ThrowSkill();
 
     }
-    protected virtual void Use()
+    
+    protected virtual void ThrowSkill()
     {
-        if (!isReady) return;
-        this.ThrowSkill();
-        isReady = false;
-        isRunning = false;
-        currentTime = 0;
+        this.isReady = false;
+        this.currentTime = 0;
+        this.StartEffect();
     }
-    protected abstract void ThrowSkill();
+    protected virtual void CatchSkill()
+    {
+        this.effectCount = 0;
+        this.StopEffect();
+    }
+    protected virtual void StartEffect()
+    {
+        isRunning = true;
+        Effect();
+    }
+    protected virtual void StopEffect()
+    {
+        isRunning = false;
+    }
+    protected abstract void Effect();
 }

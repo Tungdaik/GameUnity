@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletAbtract : TungMonoBehaviour
+public class DameAbtract : TungMonoBehaviour
 {
     [Header("Bullet Abtract")]
     [SerializeField] protected BulletCrl bulletCrl;
