@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameCrl : TungMonoBehaviour
+
 {
+    [SerializeField] protected ShipCrlBeta shipCrl;
+    public ShipCrlBeta ShipCrl => shipCrl;
     [SerializeField] protected static GameCrl instance;
     [SerializeField] protected Transform mainCam;
     public Transform MainCam { get { return mainCam; } }
@@ -17,5 +20,10 @@ public class GameCrl : TungMonoBehaviour
     {
         base.LoadCompoments();
         this.mainCam = Transform.FindObjectOfType<Camera>().transform;
+        this.LoadShipCrl();
+    }
+    protected virtual void LoadShipCrl()
+    {
+        this.shipCrl = Transform.FindObjectOfType<ShipCrlBeta>();
     }
 }

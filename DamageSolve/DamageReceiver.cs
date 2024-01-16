@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class DamageReceiver : TungMonoBehaviour
 {
+    [Header("Base")]
     [SerializeField] protected int currentHp;
     [SerializeField] protected int maxHp = 5;
     [SerializeField] protected bool isDead = false;
-    
+    public int CurrentHp => currentHp;
+    public int MaxHp => maxHp;
+ 
     protected override void LoadCompoments()
     {
         base.LoadCompoments();

@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class BaseSkill : TungMonoBehaviour
 
 {
+    [Header("Crl")]
+    [SerializeField] protected GameCrl gameCrl;
+    public GameCrl GameCrl => gameCrl;
     [Header("Base Skill")]
     [SerializeField] protected float currentTime = 0;
     [SerializeField] protected float cooldownTime;
@@ -12,15 +15,22 @@ public abstract class BaseSkill : TungMonoBehaviour
     [SerializeField] protected bool isRunning = false;
     [SerializeField] protected float effectTime = 5f;
     [SerializeField] protected float effectCount = 0;
-    [SerializeField] protected bool use;
+   
+    protected override void LoadCompoments()
+    {
+        base.LoadCompoments();
+        this.LoadCrl();
+    }
     protected virtual void FixedUpdate()
     {
         this.currentTime += Time.fixedDeltaTime;
-        if (isRunning) effectCount += Time.fixedDeltaTime;
+        if (isRunning)
+        {
+            effectCount += Time.fixedDeltaTime;
+            currentTime = 0;
+        }
         if (currentTime > cooldownTime) isReady = true;
         if (effectCount > effectTime) this.CatchSkill();
-        if (use && isReady) this.ThrowSkill();
-
     }
     
     protected virtual void ThrowSkill()
@@ -42,6 +52,17 @@ public abstract class BaseSkill : TungMonoBehaviour
     protected virtual void StopEffect()
     {
         isRunning = false;
+        Uneffect();
+    }
+    public virtual void Use()
+    {
+        if (!isReady) return;
+        this.ThrowSkill();
+    }
+    protected virtual void LoadCrl()
+    {
+        this.gameCrl = Transform.FindObjectOfType<GameCrl>();   
     }
     protected abstract void Effect();
+    protected abstract void Uneffect();
 }
