@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
     protected static InputManager instance;
     [SerializeField] protected bool i_OnDown;
     public bool I_OnDown => i_OnDown;
+    [SerializeField] protected bool q_OnDown;
+    public bool Q_OnDown => q_OnDown;
     [SerializeField] protected bool o_OnDown;
     public bool O_OnDown => o_OnDown;
     public static InputManager Instance {  get { return instance; } }
@@ -36,6 +38,10 @@ public class InputManager : MonoBehaviour
             {
                 this.o_OnDown = true;
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                
+            }
         }
         else
         {
@@ -46,6 +52,10 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.O))
             {
                 this.o_OnDown = false;
+            }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                BuffShieldSkill.Instance.Use();
             }
         }
     }

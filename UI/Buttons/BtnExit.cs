@@ -6,6 +6,6 @@ public class BtnExit : BaseButton
 {
     protected override void Action()
     {
-        BuffShieldSkill.Instance.Use();
+        Debug.LogWarning("Exit");
     }
 }

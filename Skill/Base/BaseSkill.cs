@@ -10,9 +10,13 @@ public abstract class BaseSkill : TungMonoBehaviour
     public GameCrl GameCrl => gameCrl;
     [Header("Base Skill")]
     [SerializeField] protected float currentTime = 0;
+    [SerializeField] protected float cooldownRemainTime;
+    public float CooldownRemainTime => cooldownRemainTime;
     [SerializeField] protected float cooldownTime;
     [SerializeField] protected bool isReady = false;
+    public bool IsReady => isReady;
     [SerializeField] protected bool isRunning = false;
+    public float CurrentTime => currentTime;
     [SerializeField] protected float effectTime = 5f;
     [SerializeField] protected float effectCount = 0;
    
@@ -24,6 +28,7 @@ public abstract class BaseSkill : TungMonoBehaviour
     protected virtual void FixedUpdate()
     {
         this.currentTime += Time.fixedDeltaTime;
+        this.cooldownRemainTime = Mathf.Max(0,cooldownTime- currentTime);
         if (isRunning)
         {
             effectCount += Time.fixedDeltaTime;
