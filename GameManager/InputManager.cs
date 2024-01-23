@@ -57,6 +57,10 @@ public class InputManager : MonoBehaviour
             {
                 BuffShieldSkill.Instance.Use();
             }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                BulletStormSkill.Instance.Use();
+            }
         }
     }
     void FixedUpdate()

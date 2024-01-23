@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkDespawn : DespawnByDistance
+public class JunkSpawnRandom : SpawnRandom
 {
     [SerializeField] GameCrl gameCrl;
+    [SerializeField] protected float limit = 40;
     protected override void LoadCompoments()
     {
         base.LoadCompoments();
@@ -14,9 +15,10 @@ public class JunkDespawn : DespawnByDistance
     {
         this.gameCrl = Transform.FindObjectOfType<GameCrl>();
     }
-    public override void DespawnObject()
+    protected override void Spawn()
     {
-        gameCrl.JunkCount--;
-        JunkSpawner.Instance.Despawn(transform.parent);
+        if (this.gameCrl.JunkCount >= limit) return;
+        this.gameCrl.JunkCount++;
+        base.Spawn();
     }
 }

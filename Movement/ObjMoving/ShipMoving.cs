@@ -19,8 +19,9 @@ public class ShipMoving : MoveToTargetPoint
     }
     protected override void GetTargetPoint()
     {
-        if (InputManager.Instance.OnMoving == 1) this.moveType = MoveTypeEnum.Move;
-        else this.moveType = MoveTypeEnum.Default;
+      //  if (InputManager.Instance.OnMoving == 1) 
+         //   this.moveType = MoveTypeEnum.Move;
+       // else this.moveType = MoveTypeEnum.Default;
         this.targetPoint = InputManager.Instance.TargetPosition;
     }
     protected virtual void LoadShipCrl()

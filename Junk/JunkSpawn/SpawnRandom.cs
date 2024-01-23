@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpawnRandom : TungMonoBehaviour
 {
     [SerializeField] protected SpawnCrl spawnCrl;
-    [SerializeField] protected int spawnCount = 0;
-    [SerializeField] protected int spawnCountLimit = 2;
+   
+   
     
     protected override void LoadCompoments()
     {
@@ -24,13 +24,12 @@ public class SpawnRandom : TungMonoBehaviour
     }
     protected virtual void Spawn()
     {
-        if (spawnCount >= spawnCountLimit) return;
+       
         Transform newRandom = this.spawnCrl.JunkRandom.GetRandomPoint();
         Vector3 newPos = newRandom.position;
         Quaternion newRot = transform.rotation;
         Transform newPrefab = this.spawnCrl.JunkSpawn.GetRandomPrefab();
          Transform newTrans = this.spawnCrl.JunkSpawn.Spawn(newPrefab, newPos, newRot);
-         spawnCount++;
          newTrans.gameObject.SetActive(true);
         Invoke(nameof(Spawn), 1f);
     }

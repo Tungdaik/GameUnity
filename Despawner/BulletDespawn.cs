@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletDespawn : DespawnByDistance
+public class BulletDespawn : DespawnByTime
 {
     public override void DespawnObject()
     {

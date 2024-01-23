@@ -6,5 +6,6 @@ public enum  KindOfBulletEnum {
     
     Default = 0,
     Ditmemay = 1,
-    Aothatday = 2
+    Aothatday = 2,
+    Emvuamoilen = 3
 }

@@ -5,6 +5,10 @@ using UnityEngine;
 public class GameCrl : TungMonoBehaviour
 
 {
+    [SerializeField] protected float enemyOneCount;
+    public float EnemyOneCount { get { return enemyOneCount; } set { enemyOneCount = value; } }
+    [SerializeField] protected float junkCount;
+    public float JunkCount { get { return junkCount; } set { junkCount = value; } }
     [SerializeField] protected ShipCrlBeta shipCrl;
     public ShipCrlBeta ShipCrl => shipCrl;
     [SerializeField] protected static GameCrl instance;

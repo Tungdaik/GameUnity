@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkDespawn : DespawnByDistance
+public class UFODespawn : DespawnByDistance
 {
     [SerializeField] GameCrl gameCrl;
     protected override void LoadCompoments()
@@ -16,7 +16,7 @@ public class JunkDespawn : DespawnByDistance
     }
     public override void DespawnObject()
     {
-        gameCrl.JunkCount--;
-        JunkSpawner.Instance.Despawn(transform.parent);
+        gameCrl.EnemyOneCount--;
+        EnemySpawner.Instance.Despawn(transform.parent);
     }
 }
