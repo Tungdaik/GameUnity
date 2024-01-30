@@ -32,4 +32,5 @@ public class ItemPickupable : TungMonoBehaviour
     {
         itemCrl.IronDespawn.DespawnObject();
     }
+    
 }

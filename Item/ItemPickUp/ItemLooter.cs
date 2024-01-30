@@ -35,11 +35,26 @@ public class ItemLooter : InventoryAbtract
     protected virtual void OnTriggerEnter(Collider collider)
     {
         if (collider.transform.GetComponent<ItemPickupable>() == null) return;
+
         ItemPickupable itemPickupable = collider.transform.GetComponent<ItemPickupable>();
+        if (itemPickupable.ItemCrl.ItemProfileSO.itemType == ItemTypeEnum.Resource) this.LootRes(itemPickupable);
+        if (itemPickupable.ItemCrl.ItemProfileSO.itemType == ItemTypeEnum.Equipment) this.LootEquip(itemPickupable);
+    }
+    protected void LootRes(ItemPickupable itemPickupable)
+    {
+        
         int currentLevel = itemPickupable.ItemCrl.CurrentLevel;
-        if (this.inventory.Add(itemPickupable.ItemCrl.ItemProfileSO.itemCode, 1,currentLevel)) {
+        if (this.inventory.Add(itemPickupable.ItemCrl.ItemProfileSO.itemCode, 1, currentLevel))
+        {
             itemPickupable.Picked();
         }
     }
-    
+    protected void LootEquip(ItemPickupable itemPickupable)
+    {
+        int currentLevel = itemPickupable.ItemCrl.CurrentLevel;
+        if (this.inventory.Add(itemPickupable.ItemCrl.ItemProfileSO.itemCode, 1, currentLevel))
+        {
+            itemPickupable.Picked();
+        }
+    }
 }

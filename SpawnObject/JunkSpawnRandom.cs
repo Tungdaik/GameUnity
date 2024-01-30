@@ -17,7 +17,7 @@ public class JunkSpawnRandom : SpawnRandom
     }
     protected override void Spawn()
     {
-        if (this.gameCrl.JunkCount >= limit) return;
+        if (this.gameCrl.JunkCount >= gameCrl.LimitJunk) return;
         this.gameCrl.JunkCount++;
         base.Spawn();
     }

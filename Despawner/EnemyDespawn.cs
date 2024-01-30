@@ -17,6 +17,7 @@ public class EnemyDespawn : DespawnByDistance
     public override void DespawnObject()
     {
         gameCrl.EnemyOneCount--;
+        gameCrl.AddScore(1);
         EnemySpawner.Instance.Despawn(transform.parent);
     }
 }

@@ -31,6 +31,6 @@ public class SpawnRandom : TungMonoBehaviour
         Transform newPrefab = this.spawnCrl.JunkSpawn.GetRandomPrefab();
          Transform newTrans = this.spawnCrl.JunkSpawn.Spawn(newPrefab, newPos, newRot);
          newTrans.gameObject.SetActive(true);
-        Invoke(nameof(Spawn), 1f);
+        Invoke(nameof(Spawn), 1.5f);
     }
 }

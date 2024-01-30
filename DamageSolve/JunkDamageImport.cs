@@ -29,6 +29,8 @@ public class JunkDamageImport : JunkDameAbtract
     }
     protected virtual bool ThatIsYou(Collider other)
     {
-       return  other.transform.parent.name == this.transform.parent.name;
+       bool if1 = other.transform.parent.name == this.transform.parent.name;
+        bool if2 = other.transform.parent.parent.parent.name == "EnemySpawner";
+       return  if1||if2;
     }
 }

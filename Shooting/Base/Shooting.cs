@@ -30,7 +30,7 @@ public abstract class Shooting : TungMonoBehaviour
 
         Transform newTransform = BulletSpawner.Instance.Spawn(kindOfBullet.ToString(),spawnPos, spawnRot);
         BulletCrl bulletCrl = newTransform.GetComponent<BulletCrl>();
-        bulletCrl.SetShooterName(transform.parent.name);
+        bulletCrl.SetShooterName(transform.parent.parent.parent.name);
         if (newTransform == null ) {
             //
                              }

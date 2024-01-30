@@ -16,7 +16,8 @@ public class UFODespawn : DespawnByDistance
     }
     public override void DespawnObject()
     {
-        gameCrl.EnemyOneCount--;
+        gameCrl.UFOCount--;
+        gameCrl.AddScore(2);
         EnemySpawner.Instance.Despawn(transform.parent);
     }
 }

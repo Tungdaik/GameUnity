@@ -18,7 +18,12 @@ public class DamageReceiver : TungMonoBehaviour
        
 
     }
-    
+    public virtual void Heal(int a)
+    {
+        if (isDead) return;
+        currentHp += a;
+        if(currentHp > maxHp) currentHp = maxHp;
+    }
     
     protected virtual void LoadHP()
 

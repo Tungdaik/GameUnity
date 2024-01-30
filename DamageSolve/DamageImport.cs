@@ -29,6 +29,6 @@ public class DamageImport : DameAbtract
     }
     protected virtual bool ThatIsYou(Collider other)
     {
-       return  other.transform.parent.name == this.bulletCrl.ShooterName;
+       return  other.transform.parent.parent.parent.name == this.bulletCrl.ShooterName;
     }
 }

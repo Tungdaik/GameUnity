@@ -6,6 +6,6 @@ public class BtnExit : BaseButton
 {
     protected override void Action()
     {
-        Debug.Log("Test");
+        HealSkill.Instance.Use();
     }
 }
